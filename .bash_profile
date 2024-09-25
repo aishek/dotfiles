@@ -7,5 +7,5 @@ if [ -f "$HOME/.profile" ]; then
     . "$HOME/.profile"
 fi
 
-unset PS1
+# See also install.sh for force bash prompt
 export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[33m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')\[\033[00m\] $ "

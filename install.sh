@@ -20,4 +20,10 @@ for file in "${FILES_TO_SYMLINK[@]}"; do
     ln -s "$DOTFILES_DIR/$file" ~/"$file"
 done
 
+# Check if ~/.bashrc exists
+if [ -f ~/.bashrc ]; then
+    # Append export PS1 to ~/.bashrc
+    echo 'export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[33m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')\[\033[00m\] $ "' >> ~/.bashrc
+fi
+
 echo "Dotfiles installation complete!"
